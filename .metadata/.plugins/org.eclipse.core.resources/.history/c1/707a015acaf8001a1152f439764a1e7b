@@ -1,0 +1,36 @@
+package snippet;
+
+public class Snippet {
+	x
+	博客园Logo
+	首页
+	新闻
+	博问
+	专区
+	闪存
+	班级
+	代码改变世界
+	搜索
+	注册
+	登录
+	Fork me on github
+	返回主页小茗同学的博客园个人网站：http://haoji.me(好记么)
+	博客园
+	首页
+	新随笔
+	联系
+	订阅
+	管理
+	Java之简单的图片动态显示（实现类似GIF动画效果）
+	就是每隔一定的时间显示一张图片，全部图片文件位于：“工作空间\项目名称\bin\动态图\花好月圆\”文件夹下。文件名类似：1001.jpg,1002.jpg,一直到1016.jpg:
+	
+	复制代码
+	/*
+	 * Donttai.java
+	 *
+	 * Created on __DATE__, __TIME__
+	 */
+	
+	
+}
+

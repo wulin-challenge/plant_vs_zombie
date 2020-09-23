@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.awt.image.ImageObserver"/>
+<fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+<fullyQualifiedTypeName name="core.game.GamePlay"/>
+<fullyQualifiedTypeName name="core.game.GameMouseEvent"/>
+<fullyQualifiedTypeName name="core.game.ZombieEnterSlot"/>
+<fullyQualifiedTypeName name="core.game.ZombieEnterController"/>
+</qualifiedTypeNameHistroy>

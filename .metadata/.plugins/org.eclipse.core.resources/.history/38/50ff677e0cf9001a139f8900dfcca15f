@@ -1,0 +1,140 @@
+package cn.wulin.plant.vs.zombie;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class TestImageGif extends JPanel {
+	private static final long serialVersionUID = 1L;
+
+	public static void main(String[] args) {
+
+		TestImageGif testImageGif = new TestImageGif();
+		JFrame frame = new JFrame();
+		frame.add(testImageGif);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300, 200);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		
+//		Timer timer = new Timer();
+//		int interval = 10;
+//		timer.schedule(new TimerTask() {
+//			public void run() {
+//				
+//				testImageGif.repaint();
+//			}
+//		},interval,interval);
+
+	}
+	
+	// 加载img图片
+		public static BufferedImage loadImage(String fileName) {
+			URL resource = Thread.currentThread().getContextClassLoader().getResource("images/" + fileName);
+			System.out.println(resource.toString());
+			try {
+				BufferedImage img = ImageIO.read(resource);
+
+//					img = resizeBufferedImage(img, 100, 100, true);
+//				img = resize(img, 800, 800);
+
+				return img;
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException();
+			}
+		}
+		
+//		/**
+//	     * 将gif动图重新调整大小并且输出
+//	     * @param src 源文件
+//	     * @param dest 生成文件
+//	     * @param width 生成文件的宽度
+//	     * @param height 生成文件的高度
+//	     * @throws IOException
+//	     */
+//	    public static void gifReSize(File src, File dest, int width, int height) throws IOException {
+//	        GifImage srcImage = GifDecoder.decode(src);
+//	        //主要调用的就是GifTransformer种的resize方法进行图片尺寸的调整
+//	        GifImage resizeImage = GifTransformer.resize(srcImage, width, height, true);
+//	        GifEncoder.encode(resizeImage, dest);
+//	    }
+
+//	Image createImage = Toolkit.getDefaultToolkit().createImage(loadImage2("sunflower0.gif"));
+	Image createImage = Toolkit.getDefaultToolkit().createImage(loadImage2("sunflower0.gif"));
+	createImage = resize2(createImage,100, 100);
+//	Image createImage = loadImage("sunflower0.gif");
+	
+	@Override
+	public void paint(Graphics g) {
+//		g.drawImage(loadImage("sunflower0.gif"), 0, 0, null);
+		
+		g.drawImage(createImage, 0, 0, this);
+		
+	}
+//	
+//	private JPanel getJPanel() {
+//		JPanel jp = new JPanel() {
+// 
+//			@Override
+//			protected void paintComponent(Graphics g) {
+//				// TODO Auto-generated method stub
+//				super.paintComponent(g);
+//				g.drawImage(image, 0, 0, this);
+//			}
+// 
+//		};
+//		return jp;
+//	}
+	
+	public URL loadImage2(String fileName) {
+		URL resource = Thread.currentThread().getContextClassLoader().getResource("images/" + fileName);
+		return resource;
+	}
+
+	 /* 调整图片大小
+	 * @param img
+	 * @param newW
+	 * @param newH
+	 * @return
+	 */
+	public static Image resize2(Image createImage, int newW, int newH) {
+		BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D g2d = dimg.createGraphics();
+		g2d.drawImage(createImage, 0, 0, null);
+		g2d.dispose();
+
+		return dimg;
+	}
+	
+
+	/**
+	 * 调整图片大小
+	 * @param img
+	 * @param newW
+	 * @param newH
+	 * @return
+	 */
+	public static BufferedImage resize(BufferedImage img, int newW, int newH) {
+		Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+		BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D g2d = dimg.createGraphics();
+		g2d.drawImage(tmp, 0, 0, null);
+		g2d.dispose();
+
+		return dimg;
+	}
+
+}

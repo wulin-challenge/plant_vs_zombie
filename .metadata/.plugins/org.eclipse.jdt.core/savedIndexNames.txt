@@ -1,0 +1,19 @@
+INDEX VERSION 1.131+D:\software\helpProgramming\git_client\git\workspace_directory\self_directory\game_workspace\.metadata\.plugins\org.eclipse.jdt.core
+3086798892.index
+2448815651.index
+2398362.index
+855406405.index
+508874293.index
+1692329925.index
+1891978863.index
+2172682063.index
+2575131806.index
+2175230970.index
+2826648648.index
+2389467198.index
+4286147915.index
+600761603.index
+3976855868.index
+708906512.index
+1304878703.index
+1996642859.index

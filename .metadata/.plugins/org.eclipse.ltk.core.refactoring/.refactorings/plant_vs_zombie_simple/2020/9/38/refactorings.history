@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;core.game.MouseEvent&apos; to &apos;GameMouseEvent&apos;&#x0D;&#x0A;- Original project: &apos;plant_vs_zombie_simple&apos;&#x0D;&#x0A;- Original element: &apos;core.game.MouseEvent&apos;&#x0D;&#x0A;- Renamed element: &apos;core.game.GameMouseEvent&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MouseEvent&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;core.game{MouseEvent.java[MouseEvent" matchStrategy="1" name="GameMouseEvent" qualified="false" references="true" similarDeclarations="false" stamp="1600392270604" textual="false" version="1.0"/>
+</session>

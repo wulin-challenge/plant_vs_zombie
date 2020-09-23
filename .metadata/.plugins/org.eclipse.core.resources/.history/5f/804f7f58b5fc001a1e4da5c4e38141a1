@@ -1,0 +1,135 @@
+package core.game;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import core.zombies.Zombie;
+import core.zombies.Zombie0;
+import core.zombies.Zombie1;
+import core.zombies.Zombie2;
+import core.zombies.Zombie3;
+
+/**
+ * 僵尸入场控制器
+ * @author wulin
+ *
+ */
+public class ZombieEnterController {
+
+	// 设置进场间隔,单位是每10ms加1,其实也是游戏开始的时长
+	private int zombieEnterTime = 0;
+	
+	private List<ZombieEnterSlot> enterTimeSlot = new ArrayList<>();
+	
+	public ZombieEnterController() {
+		enterTimeSlot.add(new ZombieEnterSlot(0, 300, 300,1));
+	}
+
+	public void zombieEnter(List<Zombie> zombies) {
+		zombieEnterTime++;
+		
+		for (ZombieEnterSlot slot : new ArrayList<>(enterTimeSlot)) {
+			if(zombieEnterTime>= slot.getStartTime() && zombieEnterTime<slot.getEndTime()) {
+				if(slot.getState() == 1) {
+					
+						if(zombieEnterTime%slot.getAddZombieTime()==0) {
+							zombies.add(nextOneZombie());
+						}
+					
+				}else if(slot.getState() == 2) {
+					
+				}
+			}else {
+				if(zombieEnterTime>slot.getEndTime()) {
+					
+				}
+			}
+		}
+	}
+	
+	// 生成僵尸
+	private Zombie nextOneZombie() {
+		Random rand = new Random();
+		// 控制不同种类僵尸出现的概率
+		int type = rand.nextInt(20);
+		//	return new Zombie0();
+		if(type<5) {
+			return new Zombie0();
+		}else if(type<10) {
+			return new Zombie1();
+		}else if(type<15) {
+			return new Zombie2();
+		}else {
+			return new Zombie3();
+		}
+	}
+	
+}
+
+/**
+ * 僵尸入场时间段
+ * @author wulin
+ *
+ */
+class ZombieEnterSlot{
+	/**
+	 * 僵尸入场的开始时间/休息开始时间
+	 */
+	private int startTime;
+	
+	/**
+	 * 僵尸入场的结束时间/休息结束时间
+	 */
+	private int endTime;
+	
+	/**
+	 * 在该时间段内多少时间添加一个僵尸
+	 */
+	private int addZombieTime;
+	
+	/**
+	 * 1: 表示僵尸入场时间段,2: 表示僵尸休息时间段,主要给用户喘息的时间
+	 */
+	private int state;
+	
+	public ZombieEnterSlot(int startTime, int endTime, int addZombieTime, int state) {
+		super();
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.addZombieTime = addZombieTime;
+		this.state = state;
+	}
+
+	public int getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(int startTime) {
+		this.startTime = startTime;
+	}
+
+	public int getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(int endTime) {
+		this.endTime = endTime;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public int getAddZombieTime() {
+		return addZombieTime;
+	}
+
+	public void setAddZombieTime(int addZombieTime) {
+		this.addZombieTime = addZombieTime;
+	}
+}
